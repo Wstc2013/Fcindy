@@ -1,3 +1,4 @@
+#-*-coding:utf8-*-
 """
 Django settings for wstc project.
 
@@ -43,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -76,9 +77,13 @@ WSGI_APPLICATION = 'wstc.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'fcindy',
+        'USER': 'root',
+        'PASSWORD': '1qaz@wsx',
+        'HOST': '192.168.3.207',
+        'PORT': 3306,
+    },
 }
 
 
@@ -122,3 +127,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
             os.path.join(BASE_DIR,'static/'),
 )
+##装饰器跳转页面##
+LOGIN_URL = "/auth/login/"
