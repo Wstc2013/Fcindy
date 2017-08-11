@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-5">
+        <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite">Showing {{ page_range.0 }} to
+            { len(page_range) } of {{ page_obj.paginator.count }} entries
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+            <ul class="pagination">
+                {% if page_obj.has_previous == True %}
+                    <li class="paginate_button previous " id="datatable_previous"><a
+                            href="{% url 'userlist' %}?page={{ page_obj.previous_page_number }}"
+                            aria-controls="datatable"
+                            data-dt-idx="0"
+                            tabindex="0">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="paginate_button previous disabled" id="datatable_previous"><a href="#"
+                                                                                             aria-controls="datatable"
+                                                                                             data-dt-idx="0"
+                                                                                             tabindex="0">Previous</a>
+                    </li>
+                {% endif %}
+                {% for p in page_range %}
+                    {% if page_obj.number == p %}
+                        <li class="paginate_button active"><a href="{% url 'userlist' %}?page={{ p }}"
+                                                              aria-controls="datatable" data-dt-idx="1"
+                                                              tabindex="0">{{ p }}</a></li>
+                    {% else %}
+                        <li class="paginate_button"><a href="{% url 'userlist' %}?page={{ p }}"
+                                                       aria-controls="datatable" data-dt-idx="1"
+                                                       tabindex="0">{{ p }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next  == True %}
+                    <li class="paginate_button next" id="datatable_next"><a
+                            href="{% url 'userlist' %}?page={{ page_obj.next_page_number }}"
+                            aria-controls="datatable"
+                            data-dt-idx="7" tabindex="0">Next</a>
+                    </li>
+                {% else %}
+                    <li class="paginate_button next disabled" id="datatable_next"><a href="#"
+                                                                                     aria-controls="datatable"
+                                                                                     data-dt-idx="7"
+                                                                                     tabindex="0">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
