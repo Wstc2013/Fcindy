@@ -4,3 +4,7 @@ from usermanage.models import UserProfile
 class UserlistView(ListView):
     model = UserProfile
     template_name = 'user/user_list.html'
+
+
+class UseraddView(TemplateView):
+    template_name = 'user/user_add.html'
