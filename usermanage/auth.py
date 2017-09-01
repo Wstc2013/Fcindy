@@ -10,10 +10,10 @@ class LoginView(View):
 
     def get(self, request):
         ret = {'message': '', 'next_url': '/'}
-        if request.GET.has_key('next'):
-            ret['next_url'] = request.GET['next']
-        elif request.user.is_authenticated():
+        if request.user.is_authenticated():
             return HttpResponseRedirect(reverse('index'))
+        elif request.GET.has_key('next'):
+            ret['next_url'] = request.GET['next']
         return render_to_response('auth/login.html', ret)
 
     def post(self,request):
