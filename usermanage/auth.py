@@ -34,7 +34,6 @@ class LoginView(View):
 
 
 class LogoutView(View):
-    @method_decorator(login_required)
     def get(self, request):
         auth.logout(request)
         return HttpResponseRedirect(reverse('login'))
